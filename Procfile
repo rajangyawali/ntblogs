@@ -1,1 +1,1 @@
-web: gunicorn NTBlogs.wsgi
+web: gunicorn NTBlogs.wsgi --log-file -
