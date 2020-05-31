@@ -1,0 +1,11 @@
+{% load static %}
+
+{% for adv in main_adv %}
+<!-- ad -->
+<div class="section-row text-center">
+    <a href="#" style="display: inline-block;margin: auto;">
+        <img class="img-responsive" src="{{ adv.image.url }}" alt="">
+    </a>
+</div>
+<!-- ad -->
+{% endfor %}

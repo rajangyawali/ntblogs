@@ -1,0 +1,35 @@
+{% load static %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="section-title">
+            <h2>Popular News</h2>
+        </div>
+    </div>
+    
+    {% for post, color in popular_posts_details %}
+    <!-- post -->
+    <div class="col-md-12">
+        <div class="post post-row">
+            <a class="post-img" href="{{post.get_absolute_url}}"><img src="{{ post.image.url }}" alt="" height="200"></a>
+            <div class="post-body">
+                <div class="post-meta">
+                    <a class="post-category cat-{{color}}" href="category.html">{{post.category}}</a>
+                    <span class="post-date">{{post.posted.date}}{% if post.author %}&nbsp;&nbsp;|&nbsp;&nbsp;{{post.author}}{% endif %}</span>
+                </div>
+                <h3 class="post-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
+                <p>{{post.description|truncatechars:220|safe}}</p>
+            </div>
+        </div>
+    </div>
+    <!-- /post -->
+    {% endfor %}
+    
+    <div class="col-md-12">
+        <div class="section-row">
+            <a href="{% url 'home:posts' 'popular'%}">
+                <button class="primary-button center-block">See More</button>
+            </a>
+        </div>
+    </div>
+</div>

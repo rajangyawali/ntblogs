@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+
+{% block section %}
+
+<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12">
+                    <div class="section-title">
+					{% if category == 'posts' %}
+						<h2>Recent News</h2>
+					{% else %}
+						<h2>{{category}} News</h2>
+					{% endif %}
+					<h4>{{search_message|safe}}</h4>					
+                    </div>
+                </div>
+				<div class="col-md-8">
+					{% for post, color in posts_colors %}
+                        <!-- post -->
+                        <div class="col-md-12">
+                            <div class="post post-row">
+                                <a class="post-img" href="{% url 'home:details' post.slug %}"><img src={{post.image.url}} alt="{{post.title}}" height="200"></a>
+                                <div class="post-body">
+                                    <div class="post-meta">
+                                        <a class="post-category cat-{{color}}" href="{% url 'home:posts' post.category %}">{{post.category}}</a>
+                                        <span class="post-date"><sup>Views: ({% get_hit_count for post %})</sup>&nbsp;&nbsp;&nbsp;&nbsp;{{post.posted.date}} {% if post.author %}&nbsp;&nbsp;|&nbsp;&nbsp;{{post.author}}{% endif %}</span>
+                                    </div>
+                                    <h3 class="post-title"><a href="{% url 'home:details' post.slug %}">{{post.title}}</a></h3>
+                                    <p>{{post.description|truncatechars:250|safe}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /post -->
+                    {% endfor %}
+
+					{% if posts.has_other_pages %}
+					<nav class="pagination-container">
+						<div class="pagination">
+							{% if  posts.has_previous %}
+								<a class="pagination-newer" href="?{% if query %}q={{query}}&{% endif %}page={{ posts.previous_page_number }}">PREV</a>
+							{% endif %}
+
+							{% for pages in page_range  %}
+								<span class="pagination-inner">
+									{% if posts.number == pages %}
+									<a class="pagination-active" href="#">{{pages}}</a>																
+									{% else %}
+										<a href="?{% if query %}q={{query}}&{% endif %}page={{pages}}">{{pages}}</a>
+									{% endif %}
+								</span>							
+							{% endfor %}
+
+							{% if  posts.has_next %}
+								<a class="pagination-older" href="?{% if query %}q={{query}}&{% endif %}page={{ posts.next_page_number }}">NEXT</a>
+							{% endif %}
+						</div>
+					</nav>
+					{% endif %}
+				</div>
+
+				
+
+
+				<div class="col-md-4">
+					{% include 'home/side-advertisement.html'%}
+					
+					{% include 'home/categories.html'%}
+
+					{% include 'home/most-read-sidebar.html' %}
+					
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->						
+	</div>
+	<!-- /section -->
+{% endblock section %}

@@ -1,0 +1,29 @@
+{% load static %}
+
+<!-- row -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="section-title text-center">
+            <h2>Featured Posts</h2>
+        </div>
+    </div>
+
+    {% for post, color in featured_posts %}
+    <!-- post -->
+    <div class="col-md-4">
+        <div class="post">
+            <a class="post-img" href="{{post.get_absolute_url}}"><img src="{{post.image.url}}" alt="{{post.title}}" height="220"></a>
+            <div class="post-body">
+                <div class="post-meta">
+                    <a class="post-category cat-{{color}}" href="{% url 'home:posts' post.category %}">{{post.category}}</a>
+                    <span class="post-date">{{post.posted.date}} &nbsp;&nbsp;|&nbsp;&nbsp;{{post.author}}</span>
+                </div>
+                <h3 class="post-title"><a href="{% url 'home:details' post.slug %}">{{post.title|truncatechars:100}}</a></h3>
+            </div>
+        </div>
+    </div>
+    <!-- /post -->
+    {% endfor %}
+
+</div>
+<!-- /row -->

@@ -1,0 +1,48 @@
+    {% extends 'registration/base.html' %}
+    {% block section %}
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container"> 
+            <!-- row -->
+            <br>
+            <div class="row">
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+                <h2 style="text-align:center"> Create your post here </h2>
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.media}}
+                    {% for field in form %}
+                        <div class="col-md-12 col-md-offset-1">
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                <span>{{field.name|capfirst}}</span>
+                                </div>
+                                <div class="col-md-10">
+                                {{field}}
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    {% endfor %}
+                    <div class="col-md-12 col-md-offset-3">
+                        <br>
+                        <button class="primary-button">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+    {% endblock section %}

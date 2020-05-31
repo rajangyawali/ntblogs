@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block section %}
+
+<!-- /Header -->
+<header>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>Join Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+</header>
+<!-- /Header -->
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-8">
+                <p>If you have interests on writing blogs and news on different aspects of life and society, you are most welcome in our group</p>
+                <p>You can join us by sending a strong message that shows your <i>motivation</i> on writing blogs and posts </p>
+                <p><i>For sending message please go to </i> <a href="{% url 'home:contact' %}"> Contact </a></p>
+                <p>Thank you !!</p>
+            </div>
+
+            <!-- aside -->
+            <div class="col-md-4">
+                <!-- ad -->
+                {% include 'home/side-advertisement.html' %}
+                <!-- /ad -->
+            </div>
+            <!-- /aside -->
+
+            <div class="col-md-8">
+                {% include 'home/main-advertisement.html' %}
+            </div>
+            
+            
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+{% endblock %}
+
+

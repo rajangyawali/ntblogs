@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block section %}
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+
+			{% for message in messages %}
+			<div class="alert {{ message.tags }} alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				{{ message }}
+			</div>
+			{% endfor %}
+
+			{% include 'home/recent-posts.html'%}
+
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+
+	<!-- section -->
+	<div class="section section-grey">
+		<!-- container -->
+		<div class="container">
+			{% include 'home/featured-posts.html'%}
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+	
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				
+				<div class="col-md-8">
+					{% include 'home/most-read-details.html'%}
+				</div>
+
+				<div class="col-md-4">
+					{% include 'home/side-advertisement.html'%}
+					
+					{% include 'home/categories.html'%}
+					
+				</div>
+			</div>
+			<!-- /row -->
+			
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+{% endblock section %}

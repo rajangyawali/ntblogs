@@ -1,0 +1,1 @@
+web: gunicorn NTBlogs.wsgi

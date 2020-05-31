@@ -1,0 +1,15 @@
+{% load static %}
+<!-- catagories -->
+<div class="aside-widget">
+    <div class="section-title">
+        <h2>Categories</h2>
+    </div>
+    <div class="category-widget">
+        <ul>
+            {% for category, color, count in categories_colors_counts %}
+            <li><a href="{% url 'home:posts' category %}" class="cat-{{color}}">{{category}}<span>{{count}}</span></a></li>
+            {% endfor %}
+            </ul>
+    </div>
+</div>
+<!-- /catagories -->

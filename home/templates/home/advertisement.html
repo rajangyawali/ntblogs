@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block section %}
+
+<!-- /Header -->
+<header>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>Advertisement</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+</header>
+<!-- /Header -->
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p>For advertisement please <a href="{% url 'home:contact' %}"> <i> Contact Us </i> </a> by sending message.</p>
+                <p>Thank you !!</p>
+                <br>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-8">
+                {% include 'home/main-advertisement.html' %}
+            </div>
+            
+            <!-- aside -->
+            <div class="col-md-4">
+                <!-- ad -->
+                {% include 'home/side-advertisement.html' %}
+                <!-- /ad -->
+            </div>
+            <!-- /aside -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+{% endblock %}
+
+

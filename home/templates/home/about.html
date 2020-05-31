@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block section %}
+
+<!-- /Header -->
+<header>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>About Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+</header>
+<!-- /Header -->
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="section-row">
+                    <p>NT Blog Team works on writing the contemporary news on Technology, Health, Society, Education, Fashion, Food, Entertainment and so on.</p>
+                    <p>We have a highly dedicated team that works to make our readers know the recent trends and give a good flavor while reading </p>
+                    <figure class="figure-img">
+                        <img class="img-responsive" src="{% static 'img/about-1.jpg'%}" alt="">
+                    </figure>
+                    <p>We write posts by spending a lot of time doing research on collecting the information on subject matters and validate the content if taken from third-party sources.</p>
+                </div>
+                <div class="row section-row">
+                    <div class="col-md-6">
+                        <figure class="figure-img">
+                            <img class="img-responsive" src="{% static 'img/about-2.jpg'%}" alt="">
+                        </figure>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Our Mission</h3>
+                        <p>Our mission is to provide:</p>
+                        <ul class="list-style">
+                            <li><p>Updates on recent technology</p></li>
+                            <li><p>News on Food, Fashion, Tourism and Entertainment</p></li>
+                            <li><p>Changes and behaviours in society, education, health and culture.</p></li>
+                        </ul>
+                    </div>
+                </div>
+                {% include 'home/main-advertisement.html' %}
+
+                <div class="section-row">
+                  <h3>  Our Bloggers </h3>
+                </div>
+                <!-- author -->
+                {% for author in authors %}
+                <div class="section-row">
+                    <div class="post-author">
+                        <div class="media">
+                            <div class="media-left">
+                                {% if author.image %}
+                                    <img class="media-object" src={{author.image.url}} alt="">
+                                {% else %}
+                                    <img class="media-object" src="{% static 'img/author.jpg' %}" alt="">
+                                {% endif %}                                
+                            </div>
+                            <div class="media-body">
+                                <div class="media-heading">
+                                    <h3>{{author}}</h3>
+                                </div>
+                                {% if author.description %}
+                                    <p>{{author.description}}</p>
+                                {% endif %}
+                                <p>You can mail me at: {{author.email}}</p>
+                                {% if author.links %}
+                                <ul class="author-social">
+                                    <li>Follow me on: </li>
+                                    {% if author.links.facebook_link %}<li><a href="{{author.links.facebook_link}}"><i class="fa fa-facebook"></i></a></li>{% endif %}
+                                    {% if author.links.twitter_link %}<li><a href="{{author.links.twitter_link}}"><i class="fa fa-twitter"></i></a></li>{% endif %}
+                                    {% if author.links.google_plus_link %}<li><a href="{{author.links.google_plus_link}}"><i class="fa fa-google-plus"></i></a></li>{% endif %}
+                                    {% if author.links.instagram_link %}<li><a href="{{author.links.instagram_link}}"><i class="fa fa-instagram"></i></a></li>{% endif %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- /author -->
+
+
+            </div>
+            
+            <!-- aside -->
+            <div class="col-md-4">
+                <!-- ad -->
+                {% include 'home/side-advertisement.html' %}
+                <!-- /ad -->
+
+                <!-- post widget -->
+                {% include 'home/most-read-sidebar.html' %}
+                <!-- /post widget -->
+            </div>
+            <!-- /aside -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+{% endblock %}
+
+

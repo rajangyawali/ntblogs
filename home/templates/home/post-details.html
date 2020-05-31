@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block section %}
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- Post content -->
+            <div class="col-md-8">
+                <div class="section-row sticky-container">
+                    <div class="main-post">
+                        <h3>{{post.title}}</h3>
+                        <figure class="figure-img">
+                            <img class="img-responsive" src="{{post.image.url}}" alt="{{post.title}}">
+                            <figcaption>{{post.title}}</figcaption>
+                        </figure>
+                        <p>{{post.description |safe}}</p>
+                        </div>
+                    <div class="post-shares sticky-shares">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" class="share-facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/home?status=Blog%20App%20by%20NT%20Python%20Team{{request.build_absolute_uri}}" class="share-twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="https://plus.google.com/share?url={{request.build_absolute_uri}}" class="share-google-plus"><i class="fa fa-google-plus"></i></a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}" class="share-linkedin"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                {% include 'home/main-advertisement.html'%}
+                
+                {% if post.author %}
+                <!-- author -->
+                <div class="section-row">
+                    <div class="post-author">
+                        <div class="media">
+                            <div class="media-left">
+                                {% if post.author.image %}
+                                    <img class="media-object" src={{post.author.image.url}} alt="">
+                                {% else %}
+                                    <img class="media-object" src="{% static 'img/author.jpg' %}" alt="">
+                                {% endif %}                                
+                            </div>
+                            <div class="media-body">
+                                <div class="media-heading">
+                                    <h3>{{post.author}}</h3>
+                                </div>
+                                {% if post.author.description %}
+                                    <p>{{post.author.description}}</p>
+                                {% endif %}
+                                <p>You can mail me at: {{post.author.email}}</p>
+                                {% if post.author.links %}
+                                <ul class="author-social">
+                                    <li>Follow me on: </li>
+                                    {% if post.author.links.facebook_link %}<li><a href="{{post.author.links.facebook_link}}"><i class="fa fa-facebook"></i></a></li>{% endif %}
+                                    {% if post.author.links.twitter_link %}<li><a href="{{post.author.links.twitter_link}}"><i class="fa fa-twitter"></i></a></li>{% endif %}
+                                    {% if post.author.links.google_plus_link %}<li><a href="{{post.author.links.google_plus_link}}"><i class="fa fa-google-plus"></i></a></li>{% endif %}
+                                    {% if post.author.links.instagram_link %}<li><a href="{{post.author.links.instagram_link}}"><i class="fa fa-instagram"></i></a></li>{% endif %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /author -->
+                {% endif %}
+                <!-- comments -->
+                <hr>
+                <div class="section-row">
+                    <div class="col-md-8 col-md-offset-2">
+                            <div class="media-body">
+                                <div class="fb-comments" data-href="{{request.build_absolute_uri}}" data-numposts="10" data-width=""></div>
+                            </div>
+                    </div>
+                </div>
+                <!-- /comments -->
+            </div>
+            <!-- /Post content -->
+
+            <!-- aside -->
+            <div class="col-md-4">
+                
+                {% include 'home/side-advertisement.html' %}
+
+                {% include 'home/most-read-sidebar.html' %}
+
+                {% include 'home/categories.html' %}               
+                
+            </div>
+            <!-- /aside -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+{% endblock %}

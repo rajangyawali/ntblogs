@@ -1,0 +1,11 @@
+{% load static %}
+
+{% for  adv in side_adv %}
+<!-- ad -->
+<div class="aside-widget text-center">
+    <a href="#" style="display: inline-block;margin: auto;">
+        <img class="img-responsive" src="{{ adv.image.url }}" alt="">
+    </a>
+</div>
+<!-- /ad -->
+{% endfor %}
