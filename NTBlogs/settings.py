@@ -39,7 +39,7 @@ SECRET_KEY = '0ogguo54^0k1c95&%z2of$o)v3+i*0*843e4bu$gve9&2pw+f8'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-ALLOWED_HOSTS = ['ntblogs.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['ntblogs.herokuapp.com']
 
 
 # Application definition
