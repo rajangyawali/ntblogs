@@ -39,11 +39,11 @@
                                     <td><button class ="btn btn-primary btn-sm"> <a href="{% url 'registration:add_images' post.slug %}">Imgs <i class="fa fa-plus" aria-hidden="true"></i></a></button></td>
                                 </div> {% endcomment %}
                                 <div class="col-md-1">
-                                    <td><button class ="btn btn-primary btn-sm"> <a href="{% url 'registration:edit' post.slug %}">Edit <i class="fa fa-edit" aria-hidden="true"></i></a></button></td>
+                                    <td><button class ="btn btn-primary btn-sm"> <a href="{% url 'registration:edit' post.slug %}"> Edit <i class="fa fa-edit" aria-hidden="true"></i></a></button></td>
                                 </div>
                                 <div class="col-md-1">                                    
-                                    <td><button class = "btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><a href="{% url 'registration:delete' post.slug %}">Del <i class="fa fa-trash" aria-hidden="true"></i></a></button></td>                                    
-                                </div>                                
+                                    <td><button class = "btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><a href="{% url 'registration:delete' post.slug %}"> &nbsp;Del&nbsp;  <i class="fa fa-trash" aria-hidden="true"></i></a></button></td>                                    
+                                </div>                                 
                             </div>
                             <br>
                         </div>
