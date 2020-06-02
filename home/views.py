@@ -225,13 +225,3 @@ def error_404(request, exception):
 
 def error_500(request):
     return render(request, 'error_500.html', status='500')
-
-
-def test(request):
-     
-    posts = BlogPost.objects.order_by('-hit_count_generic__hits')
-    # .annotate(hit_count_generic__hits=Cast('pk', models.PositiveIntegerField()))
-    context = {
-        'posts':posts,
-    }
-    return render(request, 'home/test.html', context)

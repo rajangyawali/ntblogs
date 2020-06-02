@@ -130,7 +130,8 @@ class Advertisement(models.Model):
     name = models.CharField(max_length=200, verbose_name='Advertisement Name')
     company = models.CharField(max_length=50, verbose_name='Advertisement Company')
     type = models.CharField(max_length=10, choices=(('Main', 'Main'), ('Side', 'Side')))
-    image = models.ImageField(upload_to="advertisementImages")
+    # image = models.ImageField(upload_to="advertisementImages")
+    image = CloudinaryField('advertisement')
     posted = models.DateTimeField(auto_now_add=True, verbose_name='Posted On')
 
     class Meta:
