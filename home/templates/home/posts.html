@@ -3,13 +3,11 @@
 {% load hitcount_tags %}
 {% block title %}
 	{% if category == 'posts' %}
-		<h2>Recent News</h2>
+		Recent News
 	{% else %}
-		<h2>{{category}} News</h2>
+		{{category|capfirst}} News
 	{% endif %}
 {% endblock title %}
-
-
 
 {% block section %}
 
