@@ -60,9 +60,57 @@
                                 <li style="justify-content:right"><a class="nav-link" href="{% url 'registration:logout' %}">Logout</a></li>
                             {% endif %}
                         </ul>
+						<!-- search & aside toggle -->
+						<div class="nav-btns">
+							<button class="aside-btn"><i class="fa fa-bars"></i></button>
+						</div>
+						<!-- /search & aside toggle -->
 					</div>
 				</div>
 				<!-- /Main Nav -->
+				<!-- Aside Nav -->
+				<div id="nav-aside">
+					<!-- nav -->
+					<div class="section-row">
+						<ul class="nav-aside-menu">
+							<li><a href="">
+                                <h3>Welcome to Admin Panel</h3>
+                                {% if user.is_authenticated %}
+                                    <small>Welcome {{user}}</small>
+                                {% endif %}
+                                </a>
+                            </li>
+							<br><br>
+							{% if user.is_authenticated %}                                                         
+                                <li style="justify-content:right"><a class="nav-link" href="{% url 'registration:edit_profile' %}">Edit Profile</a></li>
+                                <li style="justify-content:right"><a class="nav-link" href="{% url 'registration:change_password' %}">Change Password</a></li>
+                                <li style="justify-content:right"><a class="nav-link" href="{% url 'registration:logout' %}">Logout</a></li>
+                            {% else %}   
+                                <li style="justify-content:right"><a class="nav-link" href="{% url 'registration:logout' %}">Logout</a></li>
+                            {% endif %}
+						</ul>
+					</div>
+
+					<!-- social links -->
+					<div class="section-row">
+						<h4>Follow us</h4>
+						<ul class="nav-aside-social">
+							<li><a href="https://www.facebook.com/sharer/sharer.php?u=http://ntblogs.herokuapp.com"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="https://twitter.com/home?status=Blog%20App%20by%20NT%20Python%20Teamntblogs.herokuapp.com"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="https://plus.google.com/share?url=http://ntblogs.herokuapp.com"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.linkedin.com/shareArticle?mini=true&url=http://ntblogs.herokuapp.com"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+					<!-- /social links -->
+
+					<!-- aside nav close -->
+					<button class="nav-aside-close"><i class="fa fa-times"></i></button>
+					<!-- /aside nav close -->
+					<div class="nav-logo">
+						<a href="{% url 'home'%}" class="logo"><img src="{% static 'img/logo-footer.svg' %}" alt=""></a>
+					</div>
+				</div>
+				<!-- Aside Nav -->
 			</div>
 			<!-- /Nav -->
 		</header>
