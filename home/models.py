@@ -5,6 +5,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
+from cloudinary.models import CloudinaryField
 
 
 
@@ -55,7 +56,8 @@ class Author(models.Model):
     age = models.IntegerField()
     email = models.EmailField(max_length=30, unique=True, verbose_name= 'Email Address')
     phone = models.CharField(max_length=10)
-    image= models.ImageField(upload_to='authorImages/', blank=True, null=True)
+    # image= models.ImageField(upload_to='authorImages/', blank=True, null=True)
+    image = CloudinaryField('author')
     description = models.CharField(max_length=100, blank=True, null=True, verbose_name="Short Info")
     links = models.OneToOneField(AuthorFollowLinks, null=True, on_delete=models.CASCADE)
 
@@ -65,7 +67,8 @@ class Author(models.Model):
     
 class BlogPost(models.Model, HitCountMixin):
     title = models.CharField(max_length=500)
-    image = models.ImageField(upload_to='blogImages/')
+    # image = models.ImageField(upload_to='blogImages/')
+    image = CloudinaryField('blogImages')
     description = RichTextUploadingField()
     featured = models.CharField(max_length=5, default = 'False', choices=FEATURED_OPTIONS)
     slug = models.SlugField(max_length=200,unique=True)

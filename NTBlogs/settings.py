@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import django_heroku
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 from . email import *
 from django.contrib.messages import constants as messages
@@ -37,9 +41,9 @@ EMAIL_HOST_USER = os.environ.get('DJANGO_EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EMAIL_HOST_PASSWORD', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-ALLOWED_HOSTS = ['ntblogs.herokuapp.com']
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -56,6 +60,7 @@ INSTALLED_APPS = [
     'import_export',
     'hitcount',
     'ckeditor',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -162,5 +167,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME','')
+api_key = os.environ.get('CLOUDINARY_API_KEY','')
+api_secret = os.environ.get('CLOUDINARY_API_SECRET','')
+
+cloudinary.config( 
+  cloud_name = cloud_name, 
+  api_key = api_key,
+  api_secret = api_secret
+)
 
 django_heroku.settings(locals())

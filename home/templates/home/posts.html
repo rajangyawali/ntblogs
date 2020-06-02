@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load hitcount_tags %}
+{% block title %}
+	{% if category == 'posts' %}
+		<h2>Recent News</h2>
+	{% else %}
+		<h2>{{category}} News</h2>
+	{% endif %}
+{% endblock title %}
+
+
 
 {% block section %}
 
